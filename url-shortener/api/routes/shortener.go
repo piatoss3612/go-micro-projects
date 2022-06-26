@@ -36,7 +36,6 @@ func ShortenURL(c *fiber.Ctx) error {
 	}
 
 	// implement rate limiting
-
 	r2 := database.CreateClient(1)
 	defer r2.Close()
 
@@ -57,20 +56,18 @@ func ShortenURL(c *fiber.Ctx) error {
 		}
 	}
 
-	// check if the input is ans actual URL
+	// check if the input is an actual URL
 
 	if !govalidator.IsURL(body.URL) {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "invalid URL"})
 	}
 
 	// check for domain error
-
 	if !helpers.RemoveDomainError(body.URL) {
 		return c.Status(fiber.StatusServiceUnavailable).JSON(fiber.Map{"error": "you can't connect"})
 	}
 
-	// enforce https, ssl
-
+	// enforce http
 	body.URL = helpers.EnforceHTTP(body.URL)
 
 	var id string

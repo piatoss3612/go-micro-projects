@@ -12,4 +12,4 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - .db/data:/data
+      - ./db/data:/data

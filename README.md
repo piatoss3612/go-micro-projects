@@ -14,3 +14,16 @@
 
 - todo app using cli
 - [Golang Tutorial: Build A Beautiful CLI Todo App With Support for Piping](https://youtu.be/j1CXoOQXbco)
+
+### url-shortener
+
+- url shortener (Redis + Golang fiber framework)
+- containerize using docker compose
+
+```cmd
+$ cd ./url-shortener
+$ docker-compose up -d
+```
+
+- test using [postman](https://www.postman.com/)
+- [URL Shortener (Redis + Go-Fiber) - Golang Project [ Intermediate Level ]](https://youtu.be/edCnzelVRlc)
