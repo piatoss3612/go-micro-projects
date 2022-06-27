@@ -13,8 +13,8 @@
 	},
 	{
 		"Task": "workingout",
-		"Done": false,
+		"Done": true,
 		"CreatedAt": "2022-06-25T12:35:56.2966127+09:00",
-		"CompletedAt": "0001-01-01T00:00:00Z"
+		"CompletedAt": "2022-06-27T23:00:29.6823031+09:00"
 	}
 ]
