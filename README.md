@@ -1,5 +1,7 @@
 # Golang Study Projects
 
+- mini interesting projects taking 1~2 hours
+
 ### grpc-go
 
 - gRPC CRUD API with MongoDB in Go
@@ -54,3 +56,8 @@ $ ./reminder 22:53 hey how are you
 ```
 
 - [GO Project - CLI Reminder Tool [ Intermediate Project ]](https://youtu.be/HnNT6MnRlFM)
+
+### email-verifier
+
+- golang has powerful standard library to verify domain
+- [GOlang - Email Verifier Tool Project](https://youtu.be/9E4UEsWpYvM?list=PL5dTjWUk_cPYztKD7WxVFluHvpBNM28N9)
