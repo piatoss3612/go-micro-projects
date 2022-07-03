@@ -61,3 +61,14 @@ $ ./reminder 22:53 hey how are you
 
 - golang has powerful standard library to verify domain
 - [GOlang - Email Verifier Tool Project](https://youtu.be/9E4UEsWpYvM?list=PL5dTjWUk_cPYztKD7WxVFluHvpBNM28N9)
+
+### slack-age-bot
+
+- slack bot calcualting user age
+- hide environment variables with godotenv package
+
+```slack
+command: my yob is <year>
+```
+
+- [GOLANG SLACKBOT To Calculate Age](https://youtu.be/HnPm69i60xE?list=PL5dTjWUk_cPYztKD7WxVFluHvpBNM28N9)
