@@ -72,3 +72,21 @@ command: my yob is <year>
 ```
 
 - [GOLANG SLACKBOT To Calculate Age](https://youtu.be/HnPm69i60xE?list=PL5dTjWUk_cPYztKD7WxVFluHvpBNM28N9)
+
+### golang-chat
+
+- Golang + React fullstack project
+- create chat app with websocket
+
+#### backend
+```cmd
+cd ./golang-chat/backend
+go run .
+```
+#### frontend
+```cmd
+cd ./golang-chat/frontend
+npm start
+```
+
+- [GO + REACT Fullstack App - RealTime Chat](https://youtu.be/xdzLr246fXI)

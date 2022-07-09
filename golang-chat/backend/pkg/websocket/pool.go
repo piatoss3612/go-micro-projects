@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// websocket pool
 type Pool struct {
 	Register   chan *Client
 	Unregister chan *Client
@@ -11,6 +12,7 @@ type Pool struct {
 	Broadcast  chan Message
 }
 
+// factory function
 func NewPool() *Pool {
 	return &Pool{
 		Register:   make(chan *Client),
@@ -20,47 +22,50 @@ func NewPool() *Pool {
 	}
 }
 
+// start listening on websocket pool
 func (p *Pool) Start() {
 	for {
 		select {
+		// register client
 		case client := <-p.Register:
 			p.Clients[client] = true
 			fmt.Println("size of connection pool:", len(p.Clients))
 
-			for client := range p.Clients {
-				err := client.Conn.WriteJSON(Message{
-					Type: 1,
-					Body: "New User Joined...",
-				})
-				if err != nil {
-					fmt.Println("client connection error:", err)
-					delete(p.Clients, client)
-				}
+			msg := Message{
+				Type: 1,
+				Body: "New User Joined...",
 			}
 
+			p.BroadcastMessage(msg)
+
+		// unregister client
 		case client := <-p.Unregister:
 			delete(p.Clients, client)
 			fmt.Println("size of connection pool:", len(p.Clients))
 
-			for client := range p.Clients {
-				err := client.Conn.WriteJSON(Message{
-					Type: 1,
-					Body: "User Disconnected...",
-				})
-				if err != nil {
-					fmt.Println("client connection error:", err)
-					delete(p.Clients, client)
-				}
+			msg := Message{
+				Type: 1,
+				Body: "User Disconnected...",
 			}
-		case message := <-p.Broadcast:
+
+			p.BroadcastMessage(msg)
+
+		// broadcast chat message
+		case msg := <-p.Broadcast:
 			fmt.Println("sending message to all clients in the pool")
-			for client := range p.Clients {
-				err := client.Conn.WriteJSON(message)
-				if err != nil {
-					fmt.Println("client connection error:", err)
-					delete(p.Clients, client)
-				}
-			}
+
+			p.BroadcastMessage(msg)
+		}
+	}
+}
+
+// separate broadcasting message
+func (p *Pool) BroadcastMessage(msg Message) {
+	for client := range p.Clients {
+		err := client.Conn.WriteJSON(msg)
+		if err != nil {
+			fmt.Println("client connection error:", err)
+			delete(p.Clients, client)
 		}
 	}
 }
