@@ -1,9 +1,15 @@
 import React from 'react'
-import './ChatHistory.scss'
+import Message from '../Message/Message'
+import './ChatHistory.css'
 
-const ChatHistory = () => {
+const ChatHistory = (props) => {
+  const messages = props.chatLog.map(msg => <Message key={msg.timeStamp} message={msg.data} />);
+
   return (
-    <div>ChatHistory</div>
+    <div className='ChatHistory'>
+      <h2>Chat History</h2>
+      {messages}
+    </div>
   )
 }
 

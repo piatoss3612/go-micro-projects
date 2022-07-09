@@ -1,5 +1,5 @@
 import React from 'react'
-import './ChatInput.scss'
+import './ChatInput.css'
 
 const ChatInput = (props) => {
   return (

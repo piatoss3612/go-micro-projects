@@ -1,9 +1,11 @@
 import React from 'react'
-import './Message.scss'
+import { useState } from 'react'
+import './Message.css'
 
-const Message = () => {
+const Message = (props) => {
+  const message = useState(JSON.parse(props.message))[0];
   return (
-    <div>Message</div>
+    <div className='Message'>{message.body}</div>
   )
 }
 
