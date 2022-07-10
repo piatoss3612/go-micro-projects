@@ -90,3 +90,10 @@ npm start
 ```
 
 - [GO + REACT Fullstack App - RealTime Chat](https://youtu.be/xdzLr246fXI)
+
+
+### slack-test
+
+- ping pong slack bot
+
+- [Slack Bot With GO 🤖 - Golang Project Ideas 2021🤘🏼🤸🏼‍♂️](https://youtu.be/DhM3g2DvmT8?list=PL5dTjWUk_cPYj8C3QhFMxhMOj7bU1uv6v)
