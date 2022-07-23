@@ -12,7 +12,7 @@ import (
 var Client *mongo.Client = DBInstance()
 
 func DBInstance() *mongo.Client {
-	MongoDB := "mongodb://localhost:27017/caloriesdb"
+	MongoDB := "mongodb://docker:mongopw@localhost:49153/caloriesdb"
 
 	client, err := mongo.NewClient(options.Client().ApplyURI(MongoDB))
 	if err != nil {
