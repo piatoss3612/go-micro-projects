@@ -1,6 +1,7 @@
 package main
 
 import (
+	"backend/routes"
 	"os"
 
 	"github.com/gin-gonic/contrib/cors"
@@ -17,15 +18,15 @@ func main() {
 	router.Use(gin.Logger())
 	router.Use(cors.Default())
 
-	router.GET("/entries", nil)
+	router.GET("/entries", routes.GetEntries)
 
-	router.POST("/entry/create", nil)
-	router.GET("/entry/:id", nil)
-	router.PUT("entry/update/:id", nil)
-	router.DELETE("/entry/delete/:id", nil)
+	router.POST("/entry/create", routes.AddEntry)
+	router.GET("/entry/:id", routes.GetEntryById)
+	router.PUT("entry/update/:id", routes.UpdateEntry)
+	router.DELETE("/entry/delete/:id", routes.DeleteEntry)
 
-	router.GET("/ingredient/:ingredient", nil)
-	router.PUT("/ingredient/:ingredient", nil)
+	router.GET("/ingredient/:ingredient", routes.GetEntriesByIngredient)
+	router.PUT("/ingredient/:ingredient", routes.UpdateIngredient)
 
 	router.Run(":", port)
 }
