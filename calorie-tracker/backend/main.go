@@ -2,6 +2,7 @@ package main
 
 import (
 	"backend/routes"
+	"log"
 	"os"
 
 	"github.com/gin-gonic/contrib/cors"
@@ -26,7 +27,9 @@ func main() {
 	router.DELETE("/entry/delete/:id", routes.DeleteEntry)
 
 	router.GET("/ingredient/:ingredient", routes.GetEntriesByIngredient)
-	router.PUT("/ingredient/:ingredient", routes.UpdateIngredient)
+	router.PUT("/ingredient/update/:id", routes.UpdateIngredient)
 
-	router.Run(":", port)
+	if err := router.Run(":" + port); err != nil {
+		log.Panic(err)
+	}
 }
