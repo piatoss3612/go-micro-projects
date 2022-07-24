@@ -3,7 +3,6 @@ package routes
 import (
 	"context"
 	"log"
-	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -12,23 +11,22 @@ import (
 var Client *mongo.Client = DBInstance()
 
 func DBInstance() *mongo.Client {
-	MongoDB := "mongodb://docker:mongopw@localhost:49153/caloriesdb"
+	mongoURL := "mongodb://localhost:49153"
 
-	client, err := mongo.NewClient(options.Client().ApplyURI(MongoDB))
+	// setup options for MongoDB connection
+	clientOptions := options.Client().ApplyURI(mongoURL)
+	clientOptions.SetAuth(options.Credential{
+		Username: "docker",
+		Password: "mongopw",
+	})
+
+	conn, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
-		log.Fatal(err)
-	}
-
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	err = client.Connect(ctx)
-	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	log.Println("Connected to MongoDB")
-	return client
+	return conn
 }
 
 func OpenCollection(client *mongo.Client, name string) *mongo.Collection {

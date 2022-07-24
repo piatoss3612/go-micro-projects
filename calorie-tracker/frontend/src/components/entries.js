@@ -53,7 +53,7 @@ const Entries = () => {
       .post(url, {
         ingredients: newEntry.ingredients,
         dish: newEntry.dish,
-        calories: newEntry.calories,
+        calories: parseFloat(newEntry.calories),
         fat: parseFloat(newEntry.fat),
       })
       .then((response) => {
@@ -73,9 +73,9 @@ const Entries = () => {
     });
   };
 
-  const changeIngredientForEntry = () => {
-    setChangeIngredient((prev) => ({ change: false, ...prev }));
-    var url = "http://localhost:8080/entry/update/" + changeIngredient.id;
+  const changeSingleEntry = () => {
+    changeEntry.change = false;
+    var url = "http://localhost:8080/entry/update/" + changeEntry.id;
     axios.put(url, newEntry).then((response) => {
       if (response.status === 200) {
         setRefreshData(true);
@@ -84,9 +84,9 @@ const Entries = () => {
     });
   };
 
-  const changeSingleEntry = () => {
-    setChangeEntry((prev) => ({ change: false, ...prev }));
-    var url = "http://localhost:8080/ingredient/update/" + changeEntry.id;
+  const changeIngredientForEntry = () => {
+    changeIngredient.change = false;
+    var url = "http://localhost:8080/ingredient/update/" + changeIngredient.id;
     axios
       .put(url, {
         ingredients: newIngredientName,
@@ -132,38 +132,45 @@ const Entries = () => {
           <Form.Group>
             <Form.Label>Dish</Form.Label>
             <Form.Control
-              onChange={(evt) =>
-                setNewEntry((prev) => ({ dish: evt.target.value, ...prev }))
-              }
+              type="text"
+              onChange={(evt) => {
+                newEntry.dish = evt.target.value;
+              }}
             />
             <Form.Label>Ingredients</Form.Label>
             <Form.Control
-              onChange={(evt) =>
-                setNewEntry((prev) => ({
-                  ingredients: evt.target.value,
-                  ...prev,
-                }))
-              }
+              type="text"
+              onChange={(evt) => {
+                newEntry.ingredients = evt.target.value;
+              }}
             />
             <Form.Label>Calories</Form.Label>
             <Form.Control
-              onChange={(evt) =>
-                setNewEntry((prev) => ({ calories: evt.target.value, ...prev }))
-              }
+              type="number"
+              onChange={(evt) => {
+                newEntry.calories = evt.target.value;
+              }}
             />
             <Form.Label>Fat</Form.Label>
             <Form.Control
               type="number"
-              onChange={(evt) =>
-                setNewEntry((prev) => ({ fat: evt.target.value, ...prev }))
-              }
+              onChange={(evt) => {
+                newEntry.fat = evt.target.value;
+              }}
             />
           </Form.Group>
-          <Button className="" onClick={() => addEntry()}>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            className=""
+            onClick={() => {
+              addEntry();
+            }}
+          >
             Add
           </Button>
           <Button onClick={() => setAddNewEntry(false)}>Cancel</Button>
-        </Modal.Body>
+        </Modal.Footer>
       </Modal>
       <Modal
         show={changeIngredient.change}
@@ -177,18 +184,17 @@ const Entries = () => {
           <Form.Group>
             <Form.Label>New Ingredients</Form.Label>
             <Form.Control
+              type="text"
               onChange={(evt) => setNewIngredientName(evt.target.value)}
             />
           </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
           <Button onClick={changeIngredientForEntry}>Change</Button>
-          <Button
-            onClick={() =>
-              setChangeIngredient((prev) => ({ change: false, ...prev }))
-            }
-          >
+          <Button onClick={() => setChangeIngredient({ change: false, id: 0 })}>
             Cancel
           </Button>
-        </Modal.Body>
+        </Modal.Footer>
       </Modal>
       <Modal
         show={changeEntry.change}
@@ -202,42 +208,44 @@ const Entries = () => {
           <Form.Group>
             <Form.Label>Dish</Form.Label>
             <Form.Control
-              onChange={(evt) =>
-                setNewEntry((prev) => ({ dish: evt.target.value, ...prev }))
-              }
+              type="text"
+              onChange={(evt) => {
+                newEntry.dish = evt.target.value;
+              }}
             />
             <Form.Label>Ingredients</Form.Label>
             <Form.Control
-              onChange={(evt) =>
-                setNewEntry((prev) => ({
-                  ingredients: evt.target.value,
-                  ...prev,
-                }))
-              }
+              type="text"
+              onChange={(evt) => {
+                newEntry.ingredients = evt.target.value;
+              }}
             />
             <Form.Label>Calories</Form.Label>
             <Form.Control
-              onChange={(evt) =>
-                setNewEntry((prev) => ({ calories: evt.target.value, ...prev }))
-              }
+              type="number"
+              onChange={(evt) => {
+                newEntry.calories = evt.target.value;
+              }}
             />
             <Form.Label>Fat</Form.Label>
             <Form.Control
               type="number"
-              onChange={(evt) =>
-                setNewEntry((prev) => ({ fat: evt.target.value, ...prev }))
-              }
+              onChange={(evt) => {
+                newEntry.fat = evt.target.value;
+              }}
             />
           </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
           <Button onClick={changeSingleEntry}>Change</Button>
           <Button
-            onClick={() =>
-              setChangeEntry((prev) => ({ change: false, ...prev }))
-            }
+            onClick={() => {
+              setChangeEntry({ change: false, id: 0 });
+            }}
           >
             Cancel
           </Button>
-        </Modal.Body>
+        </Modal.Footer>
       </Modal>
     </div>
   );

@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/gin-gonic/contrib/cors"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 

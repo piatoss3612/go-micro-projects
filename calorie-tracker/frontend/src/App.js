@@ -3,7 +3,7 @@ import Entries from "./components/entries";
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <Entries />
     </div>
   );
