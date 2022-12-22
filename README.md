@@ -104,7 +104,7 @@ $ npm start
 
 ```cmd
 $ cd ./calorie-tracker/backend
-$ go run .$
+$ go run .
 ```
 
 ### frontend
@@ -147,3 +147,12 @@ func DBInstance() *mongo.Client {
 	...
 }
 ```
+
+## nft-collection-generator
+
+```cmd
+$ cd ./nft-collection-generator
+$ go run .
+```
+
+- [packagemain #24: Generate an NFT Collection in Go](https://youtu.be/QPvE6qxdTDk)
