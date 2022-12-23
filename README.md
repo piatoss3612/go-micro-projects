@@ -156,3 +156,8 @@ $ go run .
 ```
 
 - [packagemain #24: Generate an NFT Collection in Go](https://youtu.be/QPvE6qxdTDk)
+
+
+## Golang-ethereum
+
+- [youtube playlist](https://youtube.com/playlist?list=PLay9kDOVd_x7hbhssw4pTKZHzzc6OG0e_)
