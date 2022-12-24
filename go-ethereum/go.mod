@@ -1,4 +1,4 @@
-module go-ethereum
+module go-ethereum-tutorial
 
 go 1.19
 
