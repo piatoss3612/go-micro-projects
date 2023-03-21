@@ -161,3 +161,14 @@ $ go run .
 ## Golang-ethereum
 
 - [youtube playlist](https://youtube.com/playlist?list=PLay9kDOVd_x7hbhssw4pTKZHzzc6OG0e_)
+
+## GO-GPT-CLI
+
+> Need to get api key from OpenAI
+
+```cmd
+$ cd ./go-gpt
+$ go run .
+```
+
+- [Chat GPT GOlang Project BUILD](https://youtu.be/QNIQXpdpBuA)
