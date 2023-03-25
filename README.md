@@ -172,3 +172,14 @@ $ go run .
 ```
 
 - [Chat GPT GOlang Project BUILD](https://youtu.be/QNIQXpdpBuA)
+
+## GO GRPC DEMO
+
+```cmd
+$ go run ./server
+```
+```cmd
+$ go run ./client
+```
+
+- [FULL PROJECT - GO + GRPC](https://youtu.be/a6G5-LUlFO4)
